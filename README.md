@@ -38,7 +38,7 @@ This app is built for middle school students, providing an engaging and educatio
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/An-Interactive-Augmented-Reality-Solar-System.git
+    git clone https://github.com/amrkhaled229/An-Interactive-Augmented-Reality-Solar-System.git
     ```
 2. Open the project in Unity.
 3. Build and run the application on your AR device.
