@@ -2,8 +2,6 @@
 
 ### An Educational App for Middle School Students
 
-**Developed by:**  
-Amr Khaled and Team
 
 ## Overview
 
