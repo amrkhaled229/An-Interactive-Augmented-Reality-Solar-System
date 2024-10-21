@@ -1,126 +1,72 @@
-TUIO C# LIBRARY AND EXAMPLES
-----------------------------
-Copyright (c) 2005-2016 Martin Kaltenbrunner <martin@tuio.org>
-This software is part of reacTIVision, an open source fiducial
-tracking and multi-touch framework based on computer vision. 
-http://reactivision.sourceforge.net/
+# AR Interactive Solar System
 
-Many thanks to Andrew Jones <andrew.b.jones@gmail.com> for his 
-improvements of the C# properties and documentation style.
+### An Educational App for Middle School Students
 
-Demo Applications:
-------------------
-This package contains two demo applications which are able
-to receive TUIO messages from any TUIO enable tracker.
+**Developed by:**  
+Amr Khaled and Team
 
-* TuioDump prints the TUIO events directly to the concole
-* TuioDemo draws the object and cursor state on the screen
+## Overview
 
-You can use these demo applications for debugging purposes, 
-or use them as a starting point for the development of your own
-C# applications implementing the TUIO protocol. Please refer to
-the source code of the both examples and the following section.
+This project is an Augmented Reality (AR) application aimed at middle school students to provide an interactive and immersive learning experience of the solar system. By leveraging advanced Human-Computer Interaction (HCI) techniques, students can explore and interact with 3D models of planets, learn about their features, and understand the science behind them in a fun and engaging way.
 
-Pressing F1 will toggle FullScreen mode with the TuioDemo,
-pressing ESC or closing the Window will end the application.
-Hitting the V key will print the TUIO events to the console.
+The project integrates multiple cutting-edge technologies such as gesture and facial recognition, object detection, gaze tracking, and more to create a seamless and interactive AR learning environment.
 
-Keep in mind to make your graphics scalable for the varying
-screen and window resolutions. A reasonable TUIO application
-will run in fullscreen mode, although the windowed mode might
-be useful for debugging purposes or working with the Simulator.
+## Key Features
 
-For your convenience this example contains a monodevelop project.
+- **TUIO Markers + GUI**: Displays 3D objects of planets when the camera targets specific TUIO shapes, providing an interactive learning experience.
+- **Sockets & Bluetooth**: Ensures smooth communication between devices and platforms.
+- **Context Awareness**: Adjusts the educational content and interactivity based on user behavior and environmental factors.
+- **MediaPipe + Gesture Recognition**: Allows users to interact with the virtual solar system through hand gestures.
+- **Face Detection & Facial Recognition**: Customizes the AR experience for each user.
+- **YOLO Object Detection**: Detects relevant objects in the environment to enhance interaction.
+- **Emotion & Gaze Tracking**: Adapts the app experience based on the student’s engagement and emotional responses.
+- **Unity**: Powering the entire AR experience with seamless graphics and interaction.
 
-Application Programming Interface:
-----------------------------------
-First you  need to create an instance of TuioClient. This class 
-is listening to TUIO messages on the specified port and generates
-higher level messages based on the object events.
+## Target Audience
 
-Your application needs to implement the TuioListener interface,
-and has to be added to the TuioClient in order to receive messages.
+This app is built for middle school students, providing an engaging and educational way to explore the solar system. Students can interact with the planets in real-time, enhancing their understanding of space science.
 
-	"public class MyApplication : TuioListener"
+## Technologies Used
 
-A simple code snippet for setting up a TUIO session:
+- **Unity** for building the AR environment
+- **TUIO** for marker tracking
+- **Sockets** for network communication
+- **Bluetooth** for device interactivity
+- **MediaPipe** for hand gesture recognition
+- **YOLO** for object detection
+- **Gaze and Emotion Tracking** for personalized interactions
 
-	MyApplication app = new MyApplication();
-	TuioClient client = new TuioClient();
-	client.addTuioListener(app);
-	client.start();
+## Installation
 
-A TuioListener needs to implement the following methods:
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/your-repo-link.git
+    ```
+2. Open the project in Unity.
+3. Build and run the application on your AR device.
 
-* addTuioObject(TuioObject tobj):
-  this is called when an object becomes visible
-* updateTuioObject(TuioObject tobj):
-  and object was moved on the table surface
-* removeTuioObject(TuioObject tobj):
-  an object was removed from the table
+## Usage
 
-* addTuioCursor(TuioCursor tcur):
-  this is called when a new cursor is detected
-* updateTuioCursor(TuioCursor tcur):
-  a cursor is moving on the table surface
-* removeTuioCursor(TuioCursor tcur):
-  a cursor was removed from the table
+- Point your camera at the TUIO markers to start interacting with the solar system.
+- Use hand gestures to rotate, zoom, or select planets.
+- Gaze at planets to get more detailed information about them.
+- The system will adapt to your engagement and provide personalized feedback.
 
-* addTuioBlob(TuioBlob tblob):
-  this is called when a new blob is detected
-* updateTuiooBlob(TuioBlob tblob):
-  a blob is moving on the table surface
-* removeTuiooBlob(TuioBlob tblob):
-  a blob was removed from the table
+## Team Members
 
-* refresh(TuioTime bundleTime):
-  this method is called after each bundle,
-  use it to repaint your screen for example
+- **Amr Khaled** – Lead Developer
+- **[Other team members]** – [Roles of the team members]
 
-Each object or cursor is identified with a unique session ID that is maintained
-over its lifetime. Additionally each object carries symbol ID that corresponds
-to its attached fiducial marker number. The cursor ID of the cursor object is always
-a number in the range of all currently detected cursor blobs.
+## Future Improvements
 
-The TuioObject and TuioCursor references are updated automatically by the TuioClient
-and are always referencing to the same instance over the object lifetime.
-All the TuioObject and TuioCursor attributes are encapsulated and can be
-accessed with methods such as getX(), getY() and getAngle() and so on.
-TuioObject and TuioCursor also have some additional convenience methods
-for the calculation of distances and angles between objects. The getPath()
-method returns a Vector of TuioPoints representing the movement path of the object.
+- Adding more celestial objects and space phenomena.
+- Expanding gesture recognition capabilities.
+- Incorporating voice commands for an even more interactive experience.
 
-Alternatively the TuioClient class contains some methods for the polling
-of the currently visible objects and cursors. There are methods which return
-either a list or individual object and cursor objects. The TuioObject and
-TuioCursor classes have been added as a container which also can be used
-by external classes.
+## Contributing
 
-* getTuioObjects() returns a Vector of all currently present TuioObjects
-* getTuioCursors() returns a Vector of all currently present TuioCursors
-* getTuioBlobs() returns a Vector of all currently present TuioBlobs
-* getTuioObject(long s_id) returns a TuioObject (or NULL if not present)
-* getTuioCursor(long s_id) returns a TuioCursor (or NULL if not present)
-* getTuioBlob(long s_id) returns a TuioBlob (or NULL if not present)
+Contributions are welcome! Please feel free to submit a pull request or raise issues for feature suggestions and bug fixes.
 
-License:
---------
-This library is free software; you can redistribute it and/or
-modify it under the terms of the GNU Lesser General Public
-License as published by the Free Software Foundation; either
-version 3.0 of the License, or (at your option) any later version.
- 
-This library is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-Lesser General Public License for more details.
- 
-You should have received a copy of the GNU Lesser General Public
-License along with this library; if not, write to the Free Software
-Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+## License
 
-References:
------------
-This example is using the OSC.NET OpenSound Control library for C#
-along with a lot of changes and improvements by the author.
-http://luvtechno.net/d/1980/02/open_sound_control_for_net_2.html
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
