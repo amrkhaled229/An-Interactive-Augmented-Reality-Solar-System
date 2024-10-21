@@ -52,8 +52,8 @@ This app is built for middle school students, providing an engaging and educatio
 
 ## Team Members
 
-- **Amr Khaled** – Lead Developer
-- **[Other team members]** – [Roles of the team members]
+- **Ahmed Mohamed Mounir**
+- **Amr Khaled**
 
 ## Future Improvements
 
